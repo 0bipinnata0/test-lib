@@ -1,0 +1,26 @@
+{
+  "name": "@0bipinnata0/test-lib",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "prepare": "npm run clean && npm run build",
+    "build": "tsc --build",
+    "clean": "tsc --build --clean"
+  },
+  "main": "dist/index.js",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.14.11",
+    "typescript": "^5.5.3"
+  }
+}
