@@ -1,6 +1,6 @@
 {
   "name": "@0bipinnata0/test-lib",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "scripts": {
     "prepare": "npm run clean && npm run build",
