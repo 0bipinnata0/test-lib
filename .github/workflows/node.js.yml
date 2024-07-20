@@ -1,27 +1,23 @@
-name: Node.js Package
+name: Node.js CI
 
 on:
   push:
-    tags:
-      - "*"
-
-permissions:
-  id-token: write
+  pull_request:
 
 jobs:
   build:
-    # same as the other build
-
-  publish-npm:
-    needs: build
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [21.x]
+
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
         with:
-          node-version: 20
-          registry-url: https://registry.npmjs.org/
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
       - run: npm ci
-      - run: npm publish --provenance
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+      - run: npm run build --if-present
